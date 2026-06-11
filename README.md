@@ -1,10 +1,30 @@
-# Outloop-AI
+# OutLoop AI
 
-**From headline to product — autonomously.**
+**Build your startup on autopilot**
 
-Outloop-AI is a multi-agent AI pipeline that watches the real world for signals, turns them into validated software ideas, sizes the business opportunity, and hands off build-ready prompts to an AI coder — all orchestrated in [Jac](https://www.jaseci.org/) (the Jaseci programming language). The name reflects the goal: **close the loop** between what is happening in the news and what gets built as software, without a human sitting in every chair along the way.
+### What is OutLoop AI?
 
-Built for **Jack Hacks** (Georgia Tech's hackathon) and developed in the **Makerspace** ecosystem, Outloop-AI demonstrates how specialized AI agents can chain together into a full product-discovery and go-to-market workflow — and how Jac's walker/spawn model makes that orchestration first-class rather than bolted on.
+Every day, the news is full of real problems: budget cuts to science programs, new cybersecurity threats, shifts in how people work, breakthroughs that never reach the people who need them. Somewhere in those headlines are product ideas worth building. The hard part is finding them, validating them, and turning them into something a developer can actually ship.
+
+**OutLoop AI** solves that. It is an autonomous pipeline of seven specialized AI agents that work together like a small product team — except they run in minutes, not weeks.
+
+Here is the idea in plain terms:
+
+1. **Start with the real world.** OutLoop AI reads live news headlines from technology, business, and science. No brainstorming in a vacuum — the input is what is trending *today*.
+
+2. **Make sense of the noise.** Raw articles get grouped into clear themes (for example: "AI regulation," "space funding," "cybersecurity alerts"). One agent organizes; another agent reviews the groupings and sends feedback until the categories actually make sense.
+
+3. **Turn trends into problems.** Each theme becomes a specific problem statement — something a piece of software could realistically solve — scored by urgency, scale, and feasibility.
+
+4. **Design the product.** For every problem, the pipeline invents an app name, lists core features, picks a tech stack, and writes a complete build prompt. This is not a vague pitch deck bullet — it is a full spec ready for an AI coder.
+
+5. **Think like a business.** Separate agents size the market (TAM, SAM, SOM), sketch a revenue model, research competitor pricing, and propose packaging tiers — so you know not just *what* to build, but whether it is worth building.
+
+6. **Close the loop to code.** The best idea gets handed off automatically to **JacCoder** inside VS Code. A workspace is scaffolded, the prompt is pasted in, and development can begin — no manual copy-paste between "idea" and "implementation."
+
+The name **OutLoop AI** comes from that last step: **closing the loop** from external signals → validated idea → business case → working software. Most tools stop at chat. OutLoop AI runs the full cycle.
+
+Built for **JacHacks** at the **University of Michigan** and developed in the **Makerspace** community, OutLoop AI is written in [Jac](https://www.jaseci.org/) — the Jaseci programming language — where multi-agent orchestration (walkers, spawns, and LLM-native functions) is built into the language itself, not glued on afterward.
 
 ---
 
@@ -29,7 +49,7 @@ Built for **Jack Hacks** (Georgia Tech's hackathon) and developed in the **Maker
 
 ## The Idea
 
-Most software starts with a guess: someone reads the news, has a hunch, sketches a feature list, and hopes the market agrees. Outloop-AI inverts that friction by **systematizing the path from signal to spec**:
+Most software starts with a guess: someone reads the news, has a hunch, sketches a feature list, and hopes the market agrees. OutLoop AI inverts that friction by **systematizing the path from signal to spec**:
 
 1. **Sense** — Pull live headlines from technology, business, and science.
 2. **Structure** — Group raw articles into meaningful thematic categories.
@@ -46,7 +66,7 @@ The pipeline does not replace human judgment — it **compresses weeks of ideati
 
 ## Why We Built This
 
-| Pain point | Outloop-AI response |
+| Pain point | OutLoop AI response |
 |------------|---------------------|
 | Ideation is slow and biased toward what you already know | Agents pull from live News API headlines across multiple categories |
 | LLM outputs are often vague or unstructured | Each agent has typed `obj` schemas and strict `sem` (semantic) prompts |
@@ -201,9 +221,9 @@ For each `BusinessProfile` (or `agent6-result.json` cache):
 
 ### What is Jac?
 
-**Jac** is the programming language at the heart of the [Jaseci](https://www.jaseci.org/) stack. It is designed for **AI-native, graph-oriented, multi-agent** software. Key concepts used throughout Outloop-AI:
+**Jac** is the programming language at the heart of the [Jaseci](https://www.jaseci.org/) stack. It is designed for **AI-native, graph-oriented, multi-agent** software. Key concepts used throughout OutLoop AI:
 
-| Jac concept | How Outloop-AI uses it |
+| Jac concept | How OutLoop AI uses it |
 |-------------|------------------------|
 | `obj` | Typed data contracts between agents (`Trend`, `NewsCategory`, `SoftwarePrompt`, `BusinessProfile`, …) |
 | `walker` | Agent entry points (`LookoutAgent`, `ReviewerAgent`, `BusinessOrchestrator`, …) |
@@ -221,7 +241,7 @@ Traditional approaches often look like:
 Python script → OpenAI API → parse JSON → another script → OpenAI API → …
 ```
 
-Outloop-AI instead treats each agent as a **first-class Jac module**:
+OutLoop AI instead treats each agent as a **first-class Jac module**:
 
 ```jac
 import from agent3_reviewer { run_full_review }
@@ -282,7 +302,7 @@ default_model = "openai/gpt-4o"
 
 ## JacCoder Handoff & Code Generation
 
-Agent 5 produces prompts; **JacCoder** (a VS Code extension in the Jaseci ecosystem) turns them into Jac applications. Outloop-AI automates the handoff so nobody copies prompts by hand.
+Agent 5 produces prompts; **JacCoder** (a VS Code extension in the Jaseci ecosystem) turns them into Jac applications. OutLoop AI automates the handoff so nobody copies prompts by hand.
 
 ### Components
 
@@ -487,16 +507,16 @@ By default, `orchestrator.py` picks the **highest-scored** `SoftwarePrompt` from
 
 ## Team
 
-Outloop-AI was built for **Jack Hacks**, Georgia Tech's annual hackathon, by a team exploring autonomous product discovery in the **Makerspace** community.
+OutLoop AI was built for **JacHacks** at the **University of Michigan** by a team from the **Makerspace** community — four engineers who each owned a layer of the stack, from AI agents to frontend, backend, and databases.
 
 | Contributor | Role |
 |-------------|------|
-| **Yamaan Nandolia** | Project lead, agent pipeline architecture, orchestration layer, repository maintainer |
-| **Jack Hacks collaborators** | Core agent development (Agents 1–5), VS Code launcher integration, JacCoder automation |
+| **Yamaan Nandolia** | Product Manager and Developer |
+| **Ayush Bhardawaj** | Full Stack Engineer — AI Agents (Jac agent pipeline, byLLM integrations, multi-agent orchestration) |
+| **Nathan Tihn** | Full Stack Engineer — Frontend & Databases (generated app UI, data models, persistence layer) |
+| **Maria Guallapa** | Full Stack Engineer — Backend (API design, server-side logic, infrastructure for generated applications) |
 
-The project evolved from the internal codename **JackHacksproject** (see `jac.toml`) to **Outloop-AI** as the vision sharpened: closing the loop from external signals to shippable software.
-
-*If you contributed and are not listed, open a PR — we'd love to credit you.*
+The project started as our **JacHacks** submission and grew into **OutLoop AI** — each pipeline layer maps to a distinct agent in the code and a distinct specialty on the team.
 
 ---
 
@@ -531,6 +551,6 @@ See repository license file. If none is present, contact the maintainers before 
 ---
 
 <p align="center">
-  <strong>Outloop-AI</strong> — Sense. Structure. Specify. Ship.<br>
+  <strong>OutLoop AI</strong> — Build your startup on autopilot.<br>
   Built with Jac, orchestrated by agents, handed off to JacCoder.
 </p>
